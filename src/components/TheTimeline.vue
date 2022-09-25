@@ -11,8 +11,12 @@
 		<ul class="timeline__container">
 			<li v-for="(item, index) in items" :key="index" class="item__container">
 				<div :class="[index % 2 === 0 ? rightItem : leftItem]" class="item">
-					<div class="item__title">{{ item.name.first }} {{ item.name.last }}</div>
-					<div>{{ item.registered }}</div>
+					<h2 class="item__title">{{ item.name.first }} {{ item.name.last }}</h2>
+					<div>{{ item.about }}</div>
+					<div class="item__registered">{{ item.registered }}</div>
+					<div v-for="tag in item.tags" :key="tag" class="item__tag">
+						<div>{{ tag }}</div>
+					</div>
 				</div>
 			</li>
 		</ul>
@@ -42,7 +46,7 @@
 		&__container {
 			position: relative;
 			display: grid;
-			grid-gap: 50px;
+			grid-gap: 190px;
 			flex-direction: column;
 			grid-template-columns: repeat(2, auto);
 
@@ -52,7 +56,7 @@
 				position: absolute;
 				width: 24px;
 				height: 24px;
-				right: 292px;
+				right: 469px;
 				background-color: white;
 				border: 4px solid $dark-color;
 				bottom: -105px;
@@ -66,7 +70,7 @@
 				position: absolute;
 				width: 24px;
 				height: 24px;
-				right: 292px;
+				right: 469px;
 				background-color: white;
 				border: 4px solid $dark-color;
 				top: -105px;
@@ -85,17 +89,17 @@
 
 		&__right {
 			left: 50%;
-			color: $primary-color;
+			color: $dark-color;
 			text-align: left;
 
 			// left line
 			&::before {
 				content: '';
 				position: absolute;
-				background: $secondary-color;
+				background: $primary-color;
 				top: 0px;
-				left: 220px;
-				width: 80px;
+				left: 342px;
+				width: 140px;
 				height: 6px;
 			}
 
@@ -106,28 +110,36 @@
 				width: 25px;
 				height: 25px;
 				right: 50px;
-				background-color: $dark-color;
-				border: 4px solid $dark-color;
+				background-color: $primary-color;
+				border: 4px solid $primary-color;
 				top: -10px;
 				border-radius: 50%;
 				z-index: 1;
+			}
+
+			& > .item__title {
+				color: $primary-color;
+			}
+
+			& > .item__tag {
+				background-color: $primary-color;
 			}
 		}
 
 		&__left {
 			left: 0;
-			color: $secondary-color;
+			color: $dark-color;
 			text-align: right;
-			transform: translateY(50px);
+			transform: translateY(190px);
 
 			// right line
 			&::before {
 				content: '';
 				position: absolute;
-				background: $primary-color;
+				background: $secondary-color;
 				top: 0px;
-				right: 220px;
-				width: 80px;
+				right: 328px;
+				width: 150px;
 				height: 6px;
 			}
 
@@ -137,17 +149,40 @@
 				position: absolute;
 				width: 25px;
 				height: 25px;
-				left: 45px;
-				background-color: $dark-color;
-				border: 4px solid $dark-color;
+				left: 50px;
+				background-color: $secondary-color;
+				border: 4px solid $secondary-color;
 				top: -10px;
 				border-radius: 50%;
 				z-index: 1;
+			}
+
+			& > .item__title {
+				color: $secondary-color;
+			}
+
+			& > .item__tag {
+				background-color: $secondary-color;
 			}
 		}
 
 		&__title {
 			font-weight: bold;
+			margin-top: -10px;
+			padding-bottom: 10px;
+		}
+
+		&__registered {
+			padding: 20px 0 10px;
+			font-weight: bold;
+		}
+
+		&__tag {
+			display: inline-flex;
+			color: $light-color;
+			padding: 5px 12px;
+			border-radius: 10px;
+			margin: 5px;
 		}
 	}
 </style>
