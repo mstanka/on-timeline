@@ -1,5 +1,5 @@
 export interface TimelineItem {
-	id: string;
+	_id: string;
 	name: {
 		first: string;
 		last: string;

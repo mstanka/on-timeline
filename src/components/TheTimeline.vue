@@ -1,6 +1,7 @@
 <script setup lang="ts">
 	import { ref } from 'vue';
 	import items from '../data/timeline.json';
+	import TheTimelineItem from './TheTimelineItem.vue';
 
 	const leftItem = ref('item__left');
 	const rightItem = ref('item__right');
@@ -10,14 +11,7 @@
 	<div class="timeline">
 		<ul class="timeline__container">
 			<li v-for="(item, index) in items" :key="index" class="item__container">
-				<div :class="[index % 2 === 0 ? rightItem : leftItem]" class="item">
-					<h2 class="item__title">{{ item.name.first }} {{ item.name.last }}</h2>
-					<div>{{ item.about }}</div>
-					<div class="item__registered">{{ item.registered }}</div>
-					<div v-for="tag in item.tags" :key="tag" class="item__tag">
-						<div>{{ tag }}</div>
-					</div>
-				</div>
+				<TheTimelineItem :item="item" :class="[index % 2 === 0 ? rightItem : leftItem]" class="item" />
 			</li>
 		</ul>
 	</div>
@@ -85,104 +79,6 @@
 			list-style: none;
 			position: relative;
 			margin-top: 25px;
-		}
-
-		&__right {
-			left: 50%;
-			color: $dark-color;
-			text-align: left;
-
-			// left line
-			&::before {
-				content: '';
-				position: absolute;
-				background: $primary-color;
-				top: 0px;
-				left: 342px;
-				width: 140px;
-				height: 6px;
-			}
-
-			// left circle
-			&::after {
-				content: '';
-				position: absolute;
-				width: 25px;
-				height: 25px;
-				right: 50px;
-				background-color: $primary-color;
-				border: 4px solid $primary-color;
-				top: -10px;
-				border-radius: 50%;
-				z-index: 1;
-			}
-
-			& > .item__title {
-				color: $primary-color;
-			}
-
-			& > .item__tag {
-				background-color: $primary-color;
-			}
-		}
-
-		&__left {
-			left: 0;
-			color: $dark-color;
-			text-align: right;
-			transform: translateY(190px);
-
-			// right line
-			&::before {
-				content: '';
-				position: absolute;
-				background: $secondary-color;
-				top: 0px;
-				right: 328px;
-				width: 150px;
-				height: 6px;
-			}
-
-			// right circle
-			&::after {
-				content: '';
-				position: absolute;
-				width: 25px;
-				height: 25px;
-				left: 50px;
-				background-color: $secondary-color;
-				border: 4px solid $secondary-color;
-				top: -10px;
-				border-radius: 50%;
-				z-index: 1;
-			}
-
-			& > .item__title {
-				color: $secondary-color;
-			}
-
-			& > .item__tag {
-				background-color: $secondary-color;
-			}
-		}
-
-		&__title {
-			font-weight: bold;
-			margin-top: -10px;
-			padding-bottom: 10px;
-		}
-
-		&__registered {
-			padding: 20px 0 10px;
-			font-weight: bold;
-		}
-
-		&__tag {
-			display: inline-flex;
-			color: $light-color;
-			padding: 5px 12px;
-			border-radius: 10px;
-			margin: 5px;
 		}
 	}
 </style>
