@@ -19,11 +19,16 @@
 
 <style lang="scss" scoped>
 	@import '../styles/main.scss';
+
 	.timeline {
 		position: relative;
-		max-width: 1200px;
+		max-width: 375px;
 		margin: 0 auto;
 		padding: 100px 0;
+
+		@include media-lg {
+			max-width: 1024px;
+		}
 
 		// vertical main line
 		&::after {
@@ -33,16 +38,23 @@
 			background-color: $dark-color;
 			top: 0;
 			bottom: 0;
-			right: 50%;
+			right: 105%;
 			margin-right: -3px;
+
+			@include media-lg {
+				right: 50%;
+			}
 		}
 
 		&__container {
 			position: relative;
-			display: grid;
-			grid-gap: 190px;
-			flex-direction: column;
-			grid-template-columns: repeat(2, auto);
+
+			@include media-lg {
+				display: grid;
+				grid-gap: 200px;
+				flex-direction: column;
+				grid-template-columns: repeat(2, auto);
+			}
 
 			// bottom circle
 			&::before {
@@ -50,12 +62,16 @@
 				position: absolute;
 				width: 24px;
 				height: 24px;
-				right: 469px;
+				right: 101%;
 				background-color: white;
 				border: 4px solid $dark-color;
 				bottom: -105px;
 				border-radius: 50%;
 				z-index: 1;
+
+				@include media-lg {
+					right: 469px;
+				}
 			}
 
 			// top circle
@@ -64,12 +80,17 @@
 				position: absolute;
 				width: 24px;
 				height: 24px;
-				right: 469px;
+				right: 101%;
 				background-color: white;
 				border: 4px solid $dark-color;
-				top: -105px;
+				top: -188px;
 				border-radius: 50%;
 				z-index: 1;
+
+				@include media-lg {
+					right: 469px;
+					top: -105px;
+				}
 			}
 		}
 	}
@@ -78,7 +99,7 @@
 		&__container {
 			list-style: none;
 			position: relative;
-			margin-top: 25px;
+			margin-top: 30%;
 		}
 	}
 </style>

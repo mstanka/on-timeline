@@ -21,21 +21,31 @@
 
 <style lang="scss">
 	@import '../styles/main.scss';
+
 	.item {
 		&__right {
 			left: 50%;
 			color: $dark-color;
-			text-align: left;
+			text-align: right;
+
+			@include media-lg {
+				text-align: left;
+			}
 
 			// left line
 			&::before {
 				content: '';
 				position: absolute;
 				background: $primary-color;
-				top: 0px;
-				left: 342px;
+				top: -30px;
+				left: -5%;
 				width: 140px;
 				height: 6px;
+
+				@include media-lg {
+					top: 0px;
+					left: 342px;
+				}
 			}
 
 			// left circle
@@ -44,12 +54,17 @@
 				position: absolute;
 				width: 25px;
 				height: 25px;
-				right: 50px;
+				right: 55%;
+				top: -38px;
 				background-color: $primary-color;
 				border: 4px solid $primary-color;
-				top: -10px;
 				border-radius: 50%;
 				z-index: 1;
+
+				@include media-lg {
+					top: -10px;
+					right: 40px;
+				}
 			}
 
 			& > .item__title {
@@ -65,17 +80,25 @@
 			left: 0;
 			color: $dark-color;
 			text-align: right;
-			transform: translateY(190px);
+
+			@include media-lg {
+				transform: translateY(300px);
+			}
 
 			// right line
 			&::before {
 				content: '';
 				position: absolute;
 				background: $secondary-color;
-				top: 0px;
-				right: 328px;
+				top: -30px;
+				left: -5%;
 				width: 150px;
 				height: 6px;
+
+				@include media-lg {
+					top: 0px;
+					left: -103px;
+				}
 			}
 
 			// right circle
@@ -84,12 +107,18 @@
 				position: absolute;
 				width: 25px;
 				height: 25px;
-				left: 50px;
+				right: 55%;
+				top: -38px;
 				background-color: $secondary-color;
 				border: 4px solid $secondary-color;
-				top: -10px;
+
 				border-radius: 50%;
 				z-index: 1;
+
+				@include media-lg {
+					left: 47px;
+					top: -10px;
+				}
 			}
 
 			& > .item__title {

@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'mixins';
 
 :root {
 	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -34,8 +35,12 @@ body {
 }
 
 #app {
-	max-width: 1024px;
+	max-width: 375px;
 	margin: 0 auto;
 	padding: 2rem;
 	text-align: center;
+
+	@include media-lg {
+		max-width: 1024px;
+	}
 }
